@@ -7,13 +7,6 @@ pipeline {
 			image 'maven:3.6.3-jdk-8' 
 		}
 	}
-	agent {
-		 dockerfile {
-            dir 'jenkins'
-            args '-u root:root'
-            label 'glass-slave1'
-        }
-	}
 	stages {
 		stage('Build') {
 			steps {
