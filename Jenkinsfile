@@ -6,6 +6,8 @@ pipeline {
 		docker { 
 			image 'maven:3.6.3-jdk-8' 
 		}
+	}
+	agent {
 		 dockerfile {
             dir 'jenkins'
             args '-u root:root'
