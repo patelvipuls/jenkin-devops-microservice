@@ -8,6 +8,12 @@ pipeline {
 		}
 	}
 	stages {
+		stage('Permissions') {
+			steps {
+				sh 'chmod 755 *'
+			}
+		}
+		
 		stage('Build') {
 			steps {
 				sh 'pwd'
