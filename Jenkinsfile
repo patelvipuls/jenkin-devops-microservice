@@ -11,7 +11,6 @@ pipeline {
 			steps {
 				echo "Build"
 				sh 'pwd'
-				sh 'chmod 755 *'
 				sh 'mvn --version'
 				
 			}
