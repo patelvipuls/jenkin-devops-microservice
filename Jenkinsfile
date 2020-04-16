@@ -10,6 +10,7 @@ pipeline {
 		  	agent { docker 'maven:3-alpine' } 
 			steps {
 				echo "Build"
+				sh 'chmod 775 *'
 				sh 'pwd'
 				sh 'mvn --version'
 				
