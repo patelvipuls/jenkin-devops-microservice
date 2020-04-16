@@ -3,4 +3,5 @@ VOLUME /tmp
 EXPOSE 8000
 ADD target/*.jar app.jar
 ENV JAVA_OPTS=""
+RUN chmod -R 755 /var/jenkins_home
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
