@@ -6,12 +6,6 @@ pipeline {
 	// agent any
 	stages {
 
-		stage('Permissions') {
-            steps {
-                sh 'chmod 775 *'
-            }
-}
-	
 		stage('Build') {
 		  	agent { docker 'maven:3.6.3' } 
 			steps {
@@ -21,6 +15,13 @@ pipeline {
 				
 			}
 		}
+		
+		stage('Permissions') {
+            steps {
+                sh 'chmod 775 *'
+            }
+		}
+	
 		stage('Test') {
 			steps {
 				echo "Test"
