@@ -2,7 +2,8 @@
 
 //Declarative
 pipeline {
-	
+	# agent { docker { image 'maven:3.6.3'} }
+	agent any
 	stages {
 		stage('Permissions') {
 			steps {
@@ -11,11 +12,7 @@ pipeline {
 		}
 		
 		stage('Build') {
-			agent {
-				docker {
-					image 'maven:3.6.3'
-				}
-			}
+		
 			steps {
 				sh 'pwd'
 				sh 'mvn --version'
