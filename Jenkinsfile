@@ -2,21 +2,18 @@
 
 //Declarative
 pipeline {
-	// agent { docker { image 'maven:3.6.3'} }
-	agent any
+	agent { docker { image 'maven:3.6.3'} }
+	// agent any
 	stages {
-		stage('Permissions') {
-			steps {
-				sh 'chmod 755 *'
-			}
-		}
-		
+	
 		stage('Build') {
 		
 			steps {
-				sh 'pwd'
-				sh 'mvn --version'
 				echo "Build"
+				sh 'pwd'
+				sh 'chmod 755 *'
+				sh 'mvn --version'
+				
 			}
 		}
 		stage('Test') {
