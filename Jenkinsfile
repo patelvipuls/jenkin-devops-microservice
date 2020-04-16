@@ -5,12 +5,17 @@ pipeline {
 	agent none
 	// agent any
 	stages {
+
+		stage('Permissions') {
+            steps {
+                sh 'chmod 775 *'
+            }
+}
 	
 		stage('Build') {
-		  	agent { docker 'maven:3-alpine' } 
+		  	agent { docker 'maven:3.6.3' } 
 			steps {
 				echo "Build"
-				sh 'chmod 775 *'
 				sh 'pwd'
 				sh 'mvn --version'
 				
