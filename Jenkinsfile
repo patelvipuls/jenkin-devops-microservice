@@ -6,6 +6,12 @@ pipeline {
 	// agent any
 	stages {
 
+		stage('Permissions') {
+            steps {
+                sh 'chmod 775 *'
+            }
+		}
+
 		stage('Build') {
 		 	steps {
 				echo "Build"
