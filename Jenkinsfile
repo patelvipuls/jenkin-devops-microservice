@@ -10,6 +10,7 @@ pipeline {
 
 			steps {
 			
+				sh 'usermod -aG docker jenkins'
 				sh 'chmod -R 755 \$PWD/'
 				sh 'whoami'
 				sh 'pwd'
