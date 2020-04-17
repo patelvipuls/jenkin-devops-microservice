@@ -9,7 +9,7 @@ pipeline {
 			agent any
 
 			steps {
-				sh "sudo chown jenkins: -R \$PWD/"
+				sh "sudo chmod -R 755 \$PWD/"
 				sh  "listing directory : $PWD"
 				sh ls -la 
 			}
