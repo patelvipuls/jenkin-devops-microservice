@@ -10,6 +10,7 @@ pipeline {
 
 			steps {
 				sh "sudo chown jenkins: -R \$PWD/"
+				sh ls -la 
 			}
 		}
         
