@@ -4,7 +4,6 @@
 pipeline {
 	agent { docker {
 			image 'maven:3.6.3'
-			args '-v /root/.m2:/root/.m2' 
 			} 
 		} 
 	// agent any
@@ -19,7 +18,6 @@ pipeline {
 		stage('Build') {
 		 	steps {
 				echo "Build"
-				sh 'mvn -B -DskipTests clean package'
 				sh 'mvn --version'
 				
 			}
