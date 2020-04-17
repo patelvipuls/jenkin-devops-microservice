@@ -1,10 +1,10 @@
 pipeline {
 
-    agent any
+    agent none
 
     stages {
 
-        stage('install maven 3.6.3') {
+        stage('install maven') {
 
 			agent { docker 'maven:3.6.3'
 					args '-u root:root'
