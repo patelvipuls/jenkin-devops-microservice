@@ -4,12 +4,19 @@ pipeline {
 
     stages {
 
-        stage('install maven') {
+		stage("permission") {
+
+			steps {
+				sh "sudo chown jenkins: -R \$PWD/"
+			}
+		}
+        
+		stage('install maven') {
 
 			agent { 
 				docker {
 					image 'maven:3.6.3'
-					args '-u root:root'
+				//	args '-u root:root'
 					}
 			}
 
