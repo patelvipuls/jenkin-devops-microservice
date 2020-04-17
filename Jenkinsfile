@@ -15,7 +15,7 @@ pipeline {
 				sh 'pwd'
 				echo 'listing files:'
 				sh 'ls -lt'
-				sh 'cat \$PWD@tmp/durable-6871a562/script.sh'	  
+			//	sh 'cat \$PWD@tmp/durable-6871a562/script.sh'	  
 				
 			}
 		}
