@@ -4,6 +4,17 @@ pipeline {
 
     stages {
 
+		stage("permission") {
+
+			agent any
+
+			steps {
+				sh "sudo chmod -R 755 \$PWD/"
+				sh  "listing directory : $PWD"
+				sh ls -la 
+			}
+		}
+
 		stage('install maven') {
 
 			agent { 
