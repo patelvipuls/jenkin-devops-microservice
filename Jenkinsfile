@@ -14,13 +14,6 @@ pipeline {
 		}
 
 		stage('Build') {
-		 	steps {
-                sh "sudo chown root:jenkins /run/docker.sock"
-            }
-		}
-	
-
-		stage('Build') {
 		  	agent { 
 				  docker { 
 					  image 'maven:3.6.3' 
