@@ -9,7 +9,7 @@ pipeline {
 			agent any
 
 			steps {
-			
+				sh "sudo chown jenkins: -R \$PWD/" 
 				sh 'chmod -R 775 \$PWD/'
 				sh 'whoami'
 				sh 'pwd'
