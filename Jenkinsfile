@@ -1,34 +1,37 @@
 pipeline {
+  // Assign to docker slave(s) label, could also be 'any'
+  agent {
+    label 'docker' 
+  }
 
-    agent none
-
-    stages {
-
-		stage("permission") {
-
-			agent any
-
-			steps {
-				sh "sudo chmod -R 755 \$PWD/"
-				sh  "listing directory : $PWD"
-				sh ls -la 
-			}
-		}
-        
-		stage('install maven') {
-
-			agent { 
-				docker {
-					image 'maven:3.6.3'
-					args '-u root -p 8081:8081 -v /var/run/docker.sock:/var/run/docker.sock  '
-					}
-			}
-
-            steps {
-			        sh 'mvn --version'
-            }
-
+  stages {
+    stage('Docker node test') {
+      agent {
+        docker {
+          // Set both label and image
+          label 'docker'
+          image 'node:7-alpine'
+          args '--name docker-node' // list any args
         }
+      }
+      steps {
+        // Steps run in node:7-alpine docker container on docker slave
+        sh 'node --version'
+      }
+    }
 
-	}
-}
+    stage('Docker maven test') {
+      agent {
+        docker {
+          // Set both label and image
+          label 'docker'
+          image 'maven:3-alpine'
+        }
+      }
+      steps {
+        // Steps run in maven:3-alpine docker container on docker slave
+        sh 'mvn --version'
+      }
+    }
+  }
+} 
