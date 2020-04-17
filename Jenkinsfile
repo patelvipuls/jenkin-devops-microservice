@@ -1,41 +1,31 @@
 pipeline {
 
-    agent none
+    agent any
 
     stages {
 
-        stage("Permissions") {
-
-            agent any
-
-            steps {
-                sh "sudo chown root:jenkins /run/docker.sock"
-            }
-
-        }
-
         stage('Build') {
 
-            agent {
-                docker {
-                    image 'maven:3.6.3'
-                    reuseNode true
-                }
-            }
-
             steps {
+				sh 'sudo docker pull maven:3.6.3'
                 sh 'mvn --version'
             }
 
         }
 
 		stage('Test') {
+			
+		
+
 			steps {
 				echo "Test"
 			}
 		}
 		
 		stage('Integration Test') {
+
+		
+
 			steps {
 				echo "Integration Test"
 			}
