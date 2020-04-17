@@ -1,7 +1,7 @@
 pipeline {
   // Assign to docker slave(s) label, could also be 'any'
   agent {
-    label 'docker' 
+    label 'myDocker' 
   }
 
   stages {
@@ -9,7 +9,7 @@ pipeline {
       agent {
         docker {
           // Set both label and image
-          label 'docker'
+          label 'myDocker'
           image 'node:7-alpine'
           args '--name docker-node' // list any args
         }
@@ -24,7 +24,7 @@ pipeline {
       agent {
         docker {
           // Set both label and image
-          label 'docker'
+          label 'myDocker'
           image 'maven:3-alpine'
         }
       }
