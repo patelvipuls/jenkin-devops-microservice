@@ -9,7 +9,7 @@ pipeline {
 			agent any
 
 			steps {
-				sh  'echo path--> $PATH'
+			
 				sh 'chmod -R 775 \$PWD/'
 				sh 'whoami'
 				sh 'pwd'
