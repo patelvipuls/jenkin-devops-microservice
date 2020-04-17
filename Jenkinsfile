@@ -6,6 +6,8 @@ pipeline {
 
 		stage("permission") {
 
+			agent any
+
 			steps {
 				sh "sudo chown jenkins: -R \$PWD/"
 			}
