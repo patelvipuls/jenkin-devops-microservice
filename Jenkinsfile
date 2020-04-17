@@ -9,7 +9,7 @@ pipeline {
 			agent any
 
 			steps {
-				sh "sudo chown jenkins: -R \$PWD/" 
+				sh  echo 'Path-->'$PATH 
 				sh 'chmod -R 775 \$PWD/'
 				sh 'whoami'
 				sh 'pwd'
@@ -22,16 +22,11 @@ pipeline {
 
 		stage('install maven') {
 
-			agent { 
-				docker {
-					image 'maven:3.6.3'
-					args '--tmpfs /.config'
-					//args '-u root -p 8081:8081 -v /var/run/docker.sock:/var/run/docker.sock  '
-					}
-			}
+			agent any
 
             steps {
-			        sh 'mvn --version'
+			        sh 'docker pull maven:3.6.3'
+					sh 'mvn --version'
             }
 
         }
