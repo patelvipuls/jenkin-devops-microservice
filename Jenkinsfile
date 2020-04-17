@@ -2,21 +2,31 @@
 
 //Declarative
 pipeline {
-	agent { docker {
-			image 'maven:3.6.3'
-			} 
-		} 
-	// agent any
+	
+	agent none
+	
 	stages {
 
 		stage('Permissions') {
             steps {
-                sh 'chmod 775 *'
+                sh "sudo chown root:jenkins /run/docker.sock"
             }
 		}
 
 		stage('Build') {
 		 	steps {
+                sh "sudo chown root:jenkins /run/docker.sock"
+            }
+		}
+	
+
+		stage('Build') {
+		  	agent { 
+				  docker { 
+					  image 'maven:3.6.3' 
+					  }
+			}
+			steps {
 				echo "Build"
 				sh 'mvn --version'
 				
