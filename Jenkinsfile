@@ -9,8 +9,9 @@ pipeline {
 			agent any
 
 			steps {
-				sh 'whoami'
+			
 				sh 'chmod -R 755 \$PWD/'
+				sh 'whoami'
 				sh '\$PWD ls -la'
 				sh 'cat /var/jenkins_home/workspace/jenkin-devops-microservice-pipeline@tmp/durable-6871a562/script.sh'	  
 				
