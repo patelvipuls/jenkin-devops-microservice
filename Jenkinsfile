@@ -22,11 +22,15 @@ pipeline {
 
 		stage('install maven') {
 
-			agent any
+			agent {
+				docker {
+					image 'maven:3.6.3'
+					args '-u root:sudo -v $HOME/workspace/myproject:/myproject'
+				}
+			}
 
             steps {
-			        sh 'docker pull maven:3.6.3'
-					sh 'mvn --version'
+			     	sh 'mvn --version'
             }
 
         }
