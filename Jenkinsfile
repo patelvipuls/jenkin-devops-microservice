@@ -1,19 +1,13 @@
 pipeline {
-	
-	agent {
-        dockerfile {
-            filename 'jenkinsAgent'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+
+    agent none
 
 	stages {
-
-       
 		stage('Build') {
 		  	agent { 
 				  docker { 
 					  image 'maven:3.8.5' 
+                      args '-v /var/run/docker.sock:/var/run/docker.sock'
 					  reuseNode true
 					  }
 			}
