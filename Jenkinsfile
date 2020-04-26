@@ -4,16 +4,7 @@ pipeline {
 	
 	stages {
 
-        stage("permission") {
-
-			agent any
-
-			steps {
-				sh "sudo chmod -R 755 \$PWD/"
-				sh "cat /var/jenkins_home/workspace/jenkin-devops-microservice-pipeline@tmp/durable-6871a562/script.sh"
-			}
-		}
-
+       
 		stage('Build') {
 		  	agent { 
 				  docker { 
