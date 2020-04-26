@@ -8,7 +8,7 @@ pipeline {
 		stage('Build') {
 		  	agent { 
 				  docker { 
-					  image 'maven:3.6.3' 
+					  image 'maven:3.8.5' 
 					  reuseNode true
 					  }
 			}

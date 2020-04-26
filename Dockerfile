@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:8-jdk-apline
 VOLUME /tmp
 EXPOSE 8000
 ADD target/*.jar app.jar
