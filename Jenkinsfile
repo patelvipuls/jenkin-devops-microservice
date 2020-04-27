@@ -6,7 +6,7 @@ pipeline {
 		stage('Build') {
 		  	agent { 
 				  docker { 
-					  image 'maven:3.8.5' 
+					  image 'maven:3.6.3' 
                       args '-v /var/run/docker.sock:/var/run/docker.sock'
 					  reuseNode true
 					  }
